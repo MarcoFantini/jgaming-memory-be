@@ -1,4 +1,4 @@
-package it.jpanik.jgaming.services;
+package it.jpanik.jgaming.services.test;
 
 import it.jpanik.jgaming.dtos.TestDto;
 

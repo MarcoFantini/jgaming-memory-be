@@ -1,10 +1,10 @@
-package it.jpanik.jgaming.services;
+package it.jpanik.jgaming.services.test;
 
 import it.jpanik.jgaming.dtos.TestDto;
 import it.jpanik.jgaming.entities.Test;
 import it.jpanik.jgaming.mappers.TestMapper;
 import it.jpanik.jgaming.repositories.TestRepository;
-import it.jpanik.jgaming.services.TestService;
+import it.jpanik.jgaming.services.test.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

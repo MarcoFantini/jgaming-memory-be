@@ -1,4 +1,4 @@
-package it.jpanik.jgaming.services;
+package it.jpanik.jgaming.services.user;
 
 import it.jpanik.jgaming.dtos.UserDto;
 import it.jpanik.jgaming.entities.User;
@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(user.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(UserRole.GAMER);
+        user.enableUser();
         user = userRepository.save(user);
 
         return UserMapper.INSTANCE.userToUserDto(user);

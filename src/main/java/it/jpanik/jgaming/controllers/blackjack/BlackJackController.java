@@ -1,9 +1,6 @@
 package it.jpanik.jgaming.controllers.blackjack;
 
-import it.jpanik.jgaming.dtos.blackjack.BlackJackGameDto;
-import it.jpanik.jgaming.mappers.blackjack.BlackJackEventMapper;
-import it.jpanik.jgaming.services.BlackJackService;
-import it.jpanik.jgaming.services.blackjack.BlackJackEvent;
+import it.jpanik.jgaming.services.blackjack.services.BlackJackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;

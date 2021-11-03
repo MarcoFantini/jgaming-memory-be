@@ -1,4 +1,4 @@
-package it.jpanik.jgaming.services;
+package it.jpanik.jgaming.services.blackjack.services;
 
 import it.jpanik.jgaming.dtos.blackjack.BlackJackGameDto;
 import it.jpanik.jgaming.services.blackjack.BlackJackGame;

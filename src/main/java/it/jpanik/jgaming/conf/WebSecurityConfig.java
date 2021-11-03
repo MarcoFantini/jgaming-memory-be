@@ -1,6 +1,6 @@
 package it.jpanik.jgaming.conf;
 
-import it.jpanik.jgaming.services.UserService;
+import it.jpanik.jgaming.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -79,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     "/**/*.css",
                     "/**/*.js")
             .permitAll()
-            .antMatchers("/user/login/**")
+            .antMatchers("/user/**")
             .permitAll()
             .antMatchers("/blackjack/**")
             .permitAll()

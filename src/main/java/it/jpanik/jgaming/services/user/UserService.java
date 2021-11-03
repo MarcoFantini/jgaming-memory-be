@@ -1,4 +1,4 @@
-package it.jpanik.jgaming.services;
+package it.jpanik.jgaming.services.user;
 
 import it.jpanik.jgaming.dtos.UserDto;
 import it.jpanik.jgaming.entities.User;

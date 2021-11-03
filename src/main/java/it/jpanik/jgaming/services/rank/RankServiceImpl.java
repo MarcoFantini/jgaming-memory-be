@@ -1,4 +1,4 @@
-package it.jpanik.jgaming.services;
+package it.jpanik.jgaming.services.rank;
 
 import it.jpanik.jgaming.dtos.RankDto;
 import it.jpanik.jgaming.dtos.RankUpdateDto;

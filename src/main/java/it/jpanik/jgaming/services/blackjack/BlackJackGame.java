@@ -7,13 +7,11 @@ import it.jpanik.jgaming.enums.blackjack.BlackJackGamePhase;
 import it.jpanik.jgaming.exceptions.ServiceException;
 import it.jpanik.jgaming.exceptions.blackjack.BlackJackDealerLoseHandException;
 import it.jpanik.jgaming.mappers.blackjack.BlackJackGameMapper;
-import it.jpanik.jgaming.services.BlackJackService;
-import it.jpanik.jgaming.services.RankServiceImpl;
-import it.jpanik.jgaming.services.UserServiceImpl;
+import it.jpanik.jgaming.services.rank.RankServiceImpl;
+import it.jpanik.jgaming.services.user.UserServiceImpl;
 import it.jpanik.jgaming.services.blackjack.player.BlackJackDealer;
 import it.jpanik.jgaming.services.blackjack.player.BlackJackGamer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

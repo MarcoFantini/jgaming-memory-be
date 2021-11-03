@@ -2,9 +2,9 @@ package it.jpanik.jgaming.controllers;
 
 import it.jpanik.jgaming.dtos.AckDto;
 import it.jpanik.jgaming.dtos.ContactDto;
-import it.jpanik.jgaming.exceptions.ValidationException;
-import it.jpanik.jgaming.services.ContactService;
-import it.jpanik.jgaming.validators.ContactValidator;
+import it.jpanik.jgaming.dtos.UserDto;
+import it.jpanik.jgaming.exceptions.ServiceException;
+import it.jpanik.jgaming.services.contact.ContactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +32,9 @@ public class ContactController {
     }
 
     @PostMapping
-    public AckDto send(@RequestBody ContactDto contactDto) throws ValidationException, MessagingException {
-        LOGGER.debug("Called POST /contact with body {}", contactDto);
-        ContactValidator.validate(contactDto);
-        return contactService.sendGenericNotificationMail(contactDto);
+    public void send(@RequestBody UserDto userDto) throws MessagingException, ServiceException {
+        LOGGER.debug("Called POST /contact with body {}", userDto);
+        contactService.sendRegistrationConfirmMail(userDto);
     }
-
 
 }

@@ -4,7 +4,7 @@ import it.jpanik.jgaming.dtos.RankDto;
 import it.jpanik.jgaming.dtos.RankUpdateDto;
 import it.jpanik.jgaming.enums.GameType;
 import it.jpanik.jgaming.exceptions.ServiceException;
-import it.jpanik.jgaming.services.RankService;
+import it.jpanik.jgaming.services.rank.RankService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

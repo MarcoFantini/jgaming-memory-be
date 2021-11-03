@@ -1,13 +1,14 @@
 package it.jpanik.jgaming;
 
 import it.jpanik.jgaming.dtos.ContactDto;
-import it.jpanik.jgaming.services.ContactServiceImpl;
+import it.jpanik.jgaming.dtos.UserDto;
+import it.jpanik.jgaming.exceptions.ServiceException;
+import it.jpanik.jgaming.services.contact.ContactServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.mail.MessagingException;
-import java.io.IOException;
 
 @SpringBootTest
 class JGamingApplicationTests {
@@ -16,12 +17,11 @@ class JGamingApplicationTests {
 	private ContactServiceImpl contactServiceImpl;
 
 	@Test
-	public void testSendMail() throws MessagingException {
-		ContactDto contactDto = new ContactDto();
-		contactDto.setEmail("slin_marco96@live.it");
-		contactDto.setObject("test");
-		contactDto.setMessage("test");
-		contactServiceImpl.sendGenericNotificationMail(contactDto);
+	public void testSendMail() throws MessagingException, ServiceException {
+		UserDto userDto = new UserDto();
+		userDto.setEmail("benefe6164@cbdious.com");
+		userDto.setUsername("test");
+		contactServiceImpl.sendRegistrationConfirmMail(userDto);
 	}
 
 }
