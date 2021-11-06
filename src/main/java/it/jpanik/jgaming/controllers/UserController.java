@@ -2,7 +2,6 @@ package it.jpanik.jgaming.controllers;
 
 import it.jpanik.jgaming.dtos.LoginDto;
 import it.jpanik.jgaming.dtos.UserDto;
-import it.jpanik.jgaming.entities.User;
 import it.jpanik.jgaming.exceptions.ServiceException;
 import it.jpanik.jgaming.services.contact.ContactService;
 import it.jpanik.jgaming.services.user.UserService;
@@ -15,8 +14,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import javax.mail.MessagingException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Jacopo Korompay
@@ -29,17 +32,19 @@ public class UserController {
   private final UserService userService;
   private final ContactService contactService;
   private final AuthenticationManager authenticationManager;
+  private final SpringTemplateEngine thymeleafTemplateEngine;
   private final JwtTokenProvider jwtTokenUtil;
 
   @Autowired
   public UserController(
           final UserService userService,
           ContactService contactService, final AuthenticationManager authenticationManager,
-          final JwtTokenProvider jwtTokenUtil
+          SpringTemplateEngine thymeleafTemplateEngine, final JwtTokenProvider jwtTokenUtil
   ) {
     this.userService = userService;
     this.contactService = contactService;
     this.authenticationManager = authenticationManager;
+    this.thymeleafTemplateEngine = thymeleafTemplateEngine;
     this.jwtTokenUtil = jwtTokenUtil;
   }
 
@@ -71,11 +76,15 @@ public class UserController {
   }
 
   @GetMapping("/activate/{username}")
-  public UserDto activateUser(@PathVariable String username) {
-    LOGGER.info("Called GET /activate/");
-    System.out.println("USER ACTIVATE");
+  public String activateUser(@PathVariable String username) {
+    LOGGER.info("Called GET - USER ACTIVATE");
     UserDto userDto = userService.loadUserByUsername(username);
     userDto.enableUser();
-    return userService.update(userDto);
+    userService.update(userDto);
+    Map<String, Object> templateModel = new HashMap<>();
+    templateModel.put("username", username);
+    Context thymeleafContext = new Context();
+    thymeleafContext.setVariables(templateModel);
+    return thymeleafTemplateEngine.process("active_user.html", thymeleafContext);
   }
 }

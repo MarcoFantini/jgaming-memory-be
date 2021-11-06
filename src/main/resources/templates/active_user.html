@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:o="urn:schemas-microsoft-com:office:office">
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+    <!--/*@thymesVar id="username" type="java"*/-->
+    <h2>Welcome <span th:text="${username}"></span></h2>
+
+    <div class="w3-card-4" style="width:70%">
+        <header class="w3-container w3-light-grey">
+            <h3><span th:text="${username}"></span></h3>
+        </header>
+        <div class="w3-container">
+            <p>Your profile is active now</p>
+            <hr>
+            <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <p>CEO at Mighty Schools. Marketing and Advertising. Seeking a new job and new opportunities.</p><br>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
