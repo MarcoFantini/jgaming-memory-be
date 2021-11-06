@@ -90,6 +90,13 @@ public class UserDto implements UserDetails {
     this.token = token;
   }
 
+  public void enableUser() {
+    this.setAccountNonExpired(true);
+    this.setAccountNonLocked(true);
+    this.setCredentialsNonExpired(true);
+    this.setEnabled(true);
+  }
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return authorities;
@@ -133,5 +140,24 @@ public class UserDto implements UserDetails {
 
   public void setEnabled(boolean enabled) {
     this.enabled = enabled;
+  }
+
+  @Override
+  public String toString() {
+    return "UserDto{" +
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", email='" + email + '\'' +
+            ", avatar='" + avatar + '\'' +
+            ", presentation='" + presentation + '\'' +
+            ", role=" + role +
+            ", token='" + token + '\'' +
+            ", authorities=" + authorities +
+            ", accountNonExpired=" + accountNonExpired +
+            ", accountNonLocked=" + accountNonLocked +
+            ", credentialsNonExpired=" + credentialsNonExpired +
+            ", enabled=" + enabled +
+            '}';
   }
 }

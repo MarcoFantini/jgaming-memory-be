@@ -17,5 +17,7 @@ public interface UserService extends UserDetailsService {
 
     UserDto save(UserDto userDto);
 
+    UserDto update(UserDto userDto);
+
     UserDto loadUserByUsername(String username) throws UsernameNotFoundException;
 }

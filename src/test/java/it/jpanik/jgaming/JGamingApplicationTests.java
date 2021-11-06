@@ -20,7 +20,7 @@ class JGamingApplicationTests {
 	public void testSendMail() throws MessagingException, ServiceException {
 		UserDto userDto = new UserDto();
 		userDto.setEmail("benefe6164@cbdious.com");
-		userDto.setUsername("test");
+		userDto.setUsername("Benefe6146 - TestUser");
 		contactServiceImpl.sendRegistrationConfirmMail(userDto);
 	}
 

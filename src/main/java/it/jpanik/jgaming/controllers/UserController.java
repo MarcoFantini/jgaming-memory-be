@@ -2,6 +2,7 @@ package it.jpanik.jgaming.controllers;
 
 import it.jpanik.jgaming.dtos.LoginDto;
 import it.jpanik.jgaming.dtos.UserDto;
+import it.jpanik.jgaming.entities.User;
 import it.jpanik.jgaming.exceptions.ServiceException;
 import it.jpanik.jgaming.services.contact.ContactService;
 import it.jpanik.jgaming.services.user.UserService;
@@ -13,10 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 
@@ -70,5 +68,14 @@ public class UserController {
     response.setToken(jwt);
 
     return response;
+  }
+
+  @GetMapping("/activate/{username}")
+  public UserDto activateUser(@PathVariable String username) {
+    LOGGER.info("Called GET /activate/");
+    System.out.println("USER ACTIVATE");
+    UserDto userDto = userService.loadUserByUsername(username);
+    userDto.enableUser();
+    return userService.update(userDto);
   }
 }

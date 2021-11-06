@@ -56,10 +56,10 @@ public class ContactServiceImpl extends CustomService implements ContactService 
     @Override
     public void sendRegistrationConfirmMail(UserDto userDto) throws MessagingException, ServiceException {
         // create template model for thymeleaf html
-        Map<String, Object> templateModel = new HashMap<>();;
-        templateModel.put("recipientName", userDto.getUsername());
+        Map<String, Object> templateModel = new HashMap<>();
+        LOGGER.info(userDto.toString());
+        templateModel.put("username", userDto.getUsername());
         templateModel.put("location", "Via Gianluigi Bonelli 40, Rome.");
-        templateModel.put("logo", "logo.jpg");
         // create thymeleaf context for template model
         Context thymeleafContext = new Context();
         thymeleafContext.setVariables(templateModel);

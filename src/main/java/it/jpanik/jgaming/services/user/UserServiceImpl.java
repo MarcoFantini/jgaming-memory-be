@@ -1,9 +1,12 @@
 package it.jpanik.jgaming.services.user;
 
+import it.jpanik.jgaming.dtos.TestDto;
 import it.jpanik.jgaming.dtos.UserDto;
+import it.jpanik.jgaming.entities.Test;
 import it.jpanik.jgaming.entities.User;
 import it.jpanik.jgaming.enums.UserRole;
 import it.jpanik.jgaming.exceptions.ServiceException;
+import it.jpanik.jgaming.mappers.TestMapper;
 import it.jpanik.jgaming.mappers.UserMapper;
 import it.jpanik.jgaming.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +55,16 @@ public class UserServiceImpl implements UserService {
         user.setEmail(user.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(UserRole.GAMER);
-        user.enableUser();
         user = userRepository.save(user);
 
+        return UserMapper.INSTANCE.userToUserDto(user);
+    }
+
+    @Override
+    public UserDto update(UserDto userDto) {
+        User user = userRepository.findById(userDto.getId()).orElseThrow(null);
+        user = UserMapper.INSTANCE.updateUserFromUserDto(userDto, user);
+        userRepository.save(user);
         return UserMapper.INSTANCE.userToUserDto(user);
     }
 }

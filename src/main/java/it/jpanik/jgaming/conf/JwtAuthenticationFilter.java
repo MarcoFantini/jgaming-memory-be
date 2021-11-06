@@ -1,7 +1,6 @@
 package it.jpanik.jgaming.conf;
 
-import it.jpanik.jgaming.exceptions.ServiceException;
-import it.jpanik.jgaming.services.UserService;
+import it.jpanik.jgaming.services.user.UserService;
 import it.jpanik.jgaming.utils.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

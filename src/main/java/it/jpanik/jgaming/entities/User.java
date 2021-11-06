@@ -119,13 +119,6 @@ public class User {
     return credentialsNonExpired;
   }
 
-  public void enableUser() {
-    this.setAccountNonExpired(true);
-    this.setAccountNonLocked(true);
-    this.setCredentialsNonExpired(true);
-    this.setEnabled(true);
-  }
-
   public void setCredentialsNonExpired(boolean credentialsNonExpired) {
     this.credentialsNonExpired = credentialsNonExpired;
   }
